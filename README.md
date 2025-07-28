@@ -93,7 +93,7 @@ The model performs **reasonably well** on the IMDb dataset with an accuracy of a
 - Adjust the **number of units** in the recurrent layer.
 - Add **more Dense layers** for deeper representations.
 - Modify **max_review_length** to see how review truncation impacts results.
-- Tune **Dropout rates** for better regularization.
+- Tune **Dropout rates** for better regularisation.
 
 
 ---
