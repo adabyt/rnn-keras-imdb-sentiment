@@ -98,6 +98,15 @@ lstm_model = Sequential()
 embedding_layer = Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=max_review_length)
 lstm_model.add(embedding_layer)
 lstm_model.add(LSTM(units=128, return_sequences=False, dropout=0.2, recurrent_dropout=0.2))
+
+# To implement a Bidirectional LSTM Layer replace the line above with the following:
+# lstm_model.add(
+#     tf.keras.layers.Bidirectional(
+#         LSTM(units=128, dropout=0.2, recurrent_dropout=0.2),
+#         merge_mode='concat' # 'concat' is default, can also be 'sum', 'mul', 'ave', or None
+#         )
+#     )
+
 lstm_model.add(Dense(64, activation='relu'))
 lstm_model.add(Dropout(0.5))
 lstm_model.add(Dense(1, activation='sigmoid'))  # For binary classification
@@ -222,4 +231,5 @@ Experimenting with the following could help improve the model's performance:
 - Add more Dense layers.
 - Vary max_review_length.
 - Adjust Dropout rates.
+- Implement bidirectional LSTM / GRU (code provided in the relevant section above)
 """
