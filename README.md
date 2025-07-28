@@ -94,6 +94,7 @@ The model performs **reasonably well** on the IMDb dataset with an accuracy of a
 - Add **more Dense layers** for deeper representations.
 - Modify **max_review_length** to see how review truncation impacts results.
 - Tune **Dropout rates** for better regularisation.
+- Implement bidirectional LSTM / GRU (*code provided in the relevant section above*)
 
 
 ---
