@@ -118,6 +118,32 @@ lstm_model.add(Dense(1, activation='sigmoid'))  # For binary classification
 # gru_model.add(Dropout(0.5))
 # gru_model.add(Dense(1, activation='sigmoid'))  # For binary classification
 
+# To implement a stacked LSTM
+# lstm_model = Sequential()
+# embedding_layer = Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=max_review_length)
+# lstm_model.add(embedding_layer)
+
+# # Stacked LSTM Layer
+# # First Bidirectional LSTM layer - Must return sequences for the next LSTM (return_sequences=True)!
+# lstm_model.add(
+#     Bidirectional(
+#         LSTM(units=128, dropout=0.2, recurrent_dropout=0.2, return_sequences=True), # return_sequences=True to pass sequences to the next layer
+#         merge_mode='concat'
+#     )
+# )
+
+# # Second Bidirectional LSTM layer - Can return sequences or just the last output
+# lstm_model.add(
+#     Bidirectional(
+#         LSTM(units=128, dropout=0.2, recurrent_dropout=0.2),    # return_sequences=False by default, so it will output the last output and feeds into Dense
+#         merge_mode='concat'
+#     )
+# )
+
+# lstm_model.add(Dense(64, activation='relu'))
+# lstm_model.add(Dropout(0.5))
+# lstm_model.add(Dense(1, activation='sigmoid'))
+
 # Build the model
 lstm_model.build(input_shape=(None, max_review_length,))  # Build the model with input shape. Specify None for batch size otherwise output for the intial layer will be (500, 128) instead of (None, 500, 128)
 # Alternatively, if using GRU, use gru_model.build(input_shape=(max_review_length,))
@@ -232,4 +258,13 @@ Experimenting with the following could help improve the model's performance:
 - Vary max_review_length.
 - Adjust Dropout rates.
 - Implement bidirectional LSTM / GRU (code provided in the relevant section above)
+- Implement stacked LSTM / GRU (code provided in the relevant section above)
+"""
+
+"""
+LSTM Test         | Epoch    | Test Accuracy     | Test Loss
+------------------|----------|-------------------|-----------
+Unidirectional    | 7        | 0.8434            | 0.5120
+Bidirectional     | 7        | 0.8300            | 0.4837
+Stacked           | 7        | 0.8550            | 0.4792
 """
