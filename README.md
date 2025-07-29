@@ -95,7 +95,17 @@ The model performs **reasonably well** on the IMDb dataset with an accuracy of a
 - Modify **max_review_length** to see how review truncation impacts results.
 - Tune **Dropout rates** for better regularisation.
 - Implement bidirectional LSTM / GRU (*code provided in the relevant section*)
+- Implement stacked LSTM / GRU (*code provided in the relevant section*)
 
+---
+
+## Summary of how all LSTM models performed
+
+LSTM Test         | Epoch    | Test Accuracy     | Test Loss
+------------------|----------|-------------------|-----------
+Unidirectional    | 7        | 0.8434            | 0.5120
+Bidirectional     | 7        | 0.8300            | 0.4837
+Stacked           | 7        | 0.8550            | 0.4792
 
 ---
 
